@@ -1,0 +1,85 @@
+/* This defines styles and classes used in the book */
+body { 
+	font-family: Athelas, serif; 
+}
+
+code { 
+	font-family: monospace; 
+}
+
+h1 { 
+	text-align: center; 
+	font-size: 2.2em;
+}
+
+h2 { 
+	text-align: center; 
+	font-size: 1.5em;
+}
+
+h3 { 
+	text-align: left; 
+}
+
+h4 { 
+	text-align: left; 
+}
+
+h5 { 
+	text-align: left; 
+}
+
+h6 { 
+	text-align: left; 
+}
+
+/* For title, author, and date on the cover page */
+h1.title { text-align: center; }
+p.subtitle { text-align: center; }
+p.author { 
+	text-align: center; 
+	text-indent: 0em;
+}
+
+div.rights {
+	text-indent: 0em;
+	page-break-before: always;
+}
+
+.rights p {
+	text-indent: inherit;
+	padding-bottom: 0.5em;
+}
+
+hr {
+	width: 1in;
+    border: 1px solid;	
+  }
+
+hr + p {
+	padding-top: 0.5em;
+}
+
+p + p {
+	text-indent: 0em;
+}
+
+p {
+	padding: 0;
+	padding-top: 0em;
+	padding-bottom: 0.5em;
+	margin: 0;
+	text-align: justify;
+}
+
+
+em, em em em, em em em em em { font-style: italic;}
+
+em em, em em em em { font-style: normal; }
+
+code{ white-space: pre-wrap; }
+
+q { quotes: "“" "”" "‘" "’"; }
+
+
+
