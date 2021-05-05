@@ -1,7 +1,7 @@
 
 # Into the Unknown 
 
-## The threshold {.unnumbered}
+## The Threshold {.unnumbered}
 
 Lorem ipsum dolor sit amet consectetur adipiscing elit inceptos ridiculus, neque phasellus velit senectus integer feugiat eget auctor risus, pretium quisque eros massa ultricies imperdiet rhoncus per. Interdum magna augue aliquet fames integer nostra rhoncus hendrerit per himenaeos facilisi, laoreet congue sed viverra duis ipsum condimentum eget justo facilisis, dis inceptos hac massa class etiam aptent auctor maecenas potenti. Ante adipiscing quam accumsan in nisl metus dignissim sollicitudin massa dolor, at turpis ad nisi sit ornare cursus fermentum. Suscipit potenti dolor aliquet scelerisque consectetur mollis aptent amet taciti, ac facilisi dis at fusce venenatis nullam varius, luctus senectus pharetra sollicitudin per ridiculus montes enim. 
 
