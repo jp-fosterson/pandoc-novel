@@ -72,6 +72,10 @@ p {
 	text-align: justify;
 }
 
+ol.toc {
+    list-style-type: none;
+	padding-right: 1em;
+}
 
 em, em em em, em em em em em { font-style: italic;}
 
