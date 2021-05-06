@@ -1,8 +1,9 @@
 #
-# This is the filename prefix that will be used for the generated
+# Slug: filename prefix that will be used for the generated
 # files.  I like to use the working title, but if you're only 
 # make one book, "novel" (or whatever) works just as well.
-STORY=novel
+#
+SLUG=novel
 
 #
 # The main text of the book. This sequence determines the
@@ -29,8 +30,8 @@ COVER = images/cover.jpg
 #
 # Epub stylesheets, one for indented style formatting, another for block style.
 #
-STYLESHEET = css/stylesheet-epub-indent.css
-#STYLESHEET = css/stylesheet-epub-block.css
+#STYLESHEET = css/stylesheet-epub-indent.css
+STYLESHEET = css/stylesheet-epub-block.css
 
 
 #
@@ -50,25 +51,25 @@ LATEX = pdflatex -interaction=nonstopmode
 # The view targets open the document
 #
 all: epub pdf 
-epub: out/$(STORY).epub
-pdf: out/$(STORY).pdf
+epub: out/$(SLUG).epub
+pdf: out/$(SLUG).pdf
 view: view-epub
-unzip: out/$(STORY).unzip
+unzip: out/$(SLUG).unzip
 
 # These targets are macos specific. 
 # view-epub assumes that Calibre is installed for viewing
 # epubs.
-view-epub: out/$(STORY).epub
+view-epub: out/$(SLUG).epub
 	open -a ebook-viewer $<
-view-pdf: out/$(STORY).pdf
+view-pdf: out/$(SLUG).pdf
 	open $<
 
 ################
 
 ### EPUB
-out/$(STORY).epub: metadata.yaml $(CONTENTS) $(BACKMATTER) $(STYLESHEET) $(COVER) | out
+out/$(SLUG).epub: metadata.yaml $(CONTENTS) $(BACKMATTER) $(STYLESHEET) $(COVER) | out
 	pandoc 	$(PANDOC_ARGS) \
-		-o out/$(STORY).epub \
+		-o out/$(SLUG).epub \
 		--css=$(STYLESHEET) \
 		--number-sections\
 		metadata.yaml \
@@ -76,9 +77,9 @@ out/$(STORY).epub: metadata.yaml $(CONTENTS) $(BACKMATTER) $(STYLESHEET) $(COVER
 
 # if you want to see what's being built inside the epub
 # you can unzip it and look at the files.
-out/$(STORY).unzip: out/$(STORY).epub | out
-	rm -rf out/$(STORY).unzip
-	unzip out/$(STORY).epub -d out/$(STORY).unzip
+out/$(SLUG).unzip: out/$(SLUG).epub | out
+	rm -rf out/$(SLUG).unzip
+	unzip out/$(SLUG).epub -d out/$(SLUG).unzip
 
 ### PDF
 out/%.pdf: %.tex | out
@@ -88,7 +89,7 @@ out/%.pdf: %.tex | out
 
 
 ### LaTeX - needed for pdf
-$(STORY).tex: templates/book.tex metadata.yaml $(CONTENTS) tmp/backmatter.tex
+$(SLUG).tex: templates/book.tex metadata.yaml $(CONTENTS) tmp/backmatter.tex
 	pandoc $(PANDOC_ARGS) \
 		--template=templates/book.tex \
 		-o $@ metadata.yaml \
