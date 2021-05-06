@@ -30,8 +30,8 @@ COVER = images/cover.jpg
 #
 # Epub stylesheets, one for indented style formatting, another for block style.
 #
-#STYLESHEET = css/stylesheet-epub-indent.css
-STYLESHEET = css/stylesheet-epub-block.css
+STYLESHEET = css/stylesheet-epub-indent.css
+#STYLESHEET = css/stylesheet-epub-block.css
 
 
 #
