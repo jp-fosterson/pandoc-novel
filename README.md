@@ -5,7 +5,7 @@ This is a template project for writing a novel or story collection as markdown f
 
 Well formatted ePub and PDF files should be enough for publishing ebooks and print-on-demand books with [Amazon KDP](https://kdp.amazon.com), [Barnes and Noble Press](https://press.barnesandnoble.com), [Smashwords.com](https://smashwords.com), and other self-publishing outlets.  (Well, that and a decent-looking cover, but cover design, especially for print books, is beyond the scope of this template.)
 
-You can see example output for[PDF](doc/example.pdf), and [ePub](doc/example.epub).
+You can see example output for [PDF](doc/example.pdf), and [ePub](doc/example.epub).
 
 Set Up
 -------
