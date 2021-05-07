@@ -20,7 +20,7 @@ Set Up
 
     git clone git@github.com:jp-fosterson/pandoc-novel.git
 
-### Try it out!
+### Try it out
 
     cd pandoc-novel
     make
@@ -29,7 +29,7 @@ This will build two targets `out/example.epub` and `out/example.pdf`.  Open them
 
 If you're on macOS  `make view-epub` will attempt to build the `epub` target and open the file in [Calibre's](https://calibre-ebook.com) ebook viewer component (without actually adding the book to your library).  Likewise `make view-pdf` will build the `pdf` target and open it with the default PDF viewer (probably `Preview`).  If you're not on macOS, you can edit these targets in the `Makefile` to open the documents in your favorite viewers.
 
-Writing!
+Writing
 --------
 
 ### `text/`
