@@ -1,9 +1,9 @@
 #
 # Slug: filename prefix that will be used for the generated
-# files.  I like to use the working title, but if you're only 
-# make one book, "novel" (or whatever) works just as well.
+# files. e.g. example.epub and example.pdf, plus intermediate
+# files like example.tex
 #
-SLUG=novel
+SLUG=example
 
 #
 # The main text of the book. This sequence determines the
@@ -21,6 +21,8 @@ BACKMATTER = \
 	text/ack.md \
 	text/about.md\
 	\
+
+TEXT = $(CONTENTS) $(BACKMATTER)
 
 #
 # The cover image
@@ -103,6 +105,9 @@ tmp/backmatter.tex: $(BACKMATTER) | tmp
 		-o $@ $^
 
 # GENERAL 
+tkcheck:
+	! grep TK $(TEXT) 
+
 out:
 	mkdir out
 
