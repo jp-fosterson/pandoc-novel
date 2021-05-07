@@ -73,9 +73,17 @@ BACKMATTER = \
 
 The title, author, copyright notice, ePub cover image, and other important metadata are defined in [`metadata.yaml`](/metadata.yaml).
 
-### Other `make` targets
+###  `make` targets
+
+`make clean` --- cleans up everything, including the output and all the LaTeX shrapnel left in the directory after building.
+
+`make tkcheck` --- searches for "TK" in the text and fails if it finds any.  [Editors use "TK" to indicate more "to come](https://en.wikipedia.org/wiki/To_come_(publishing)", i.e. unfinished writing.  You can do `make tkcheck all` to build the documents only once all TKs are removed.
 
 
+Customization
+--------------
+
+TBD
 
 
 
