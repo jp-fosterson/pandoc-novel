@@ -20,6 +20,8 @@ Set Up
 
     git clone git@github.com:jp-fosterson/pandoc-novel.git
 
+...or fork the repo (it's a template), and clone your own copy.
+
 ### Try it out
 
     cd pandoc-novel
