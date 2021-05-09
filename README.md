@@ -77,11 +77,16 @@ The title, author, copyright notice, ePub cover image, and other important metad
 
 ###  `make` targets
 
+`make` or `make all` --- makes the main ePub and PDF targets in `out/`.
+
+`make pdf`, `make epub` --- do what they say
+
+`make unzip` --- Builds the ePub document, which really just a zip archive full of files, and then unzips it into `out/$(SLUG).unzip` so that you can examine the contents.  This is fun for the curious, or if you need to understand the style classes used in the document when modifying the stylesheet (see below).
+
 `make clean` --- cleans up everything, including the output and all the LaTeX shrapnel left in the directory after building.
 
 `make tkcheck` --- searches for "TK" in the text and fails if it finds any.  [Editors use "TK" to indicate more [to come](https://en.wikipedia.org/wiki/To_come_(publishing)), i.e. unfinished writing.  You can do `make tkcheck all` to build the documents only when all TKs are removed.]
 
-`make unzip` --- Builds the ePub document, which really just a zip archive full of files, and then unzips it into `out/$(SLUG).unzip` so that you can examine the contents.  This is fun for the curious, or if you need to understand the style classes used in the document when modifying the stylesheet (see below).
 
 Customization
 --------------
