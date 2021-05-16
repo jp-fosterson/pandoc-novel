@@ -2,12 +2,27 @@
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
 \usepackage[hidelinks]{hyperref}
-
+\usepackage{graphicx}
 \usepackage{fancyhdr}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Redefine some commands
+
+\renewcommand{\part}[1]{\vspace*{\fill}\begin{center}#1\end{center}\vspace*{\fill}}
 
 \renewcommand{\section}[3][-,-]{\begin{center}#3\end{center}}
 \renewcommand{\rule}[3][1]{\#}
+\def\tightlist{}
 
+\makeatletter
+\def\@xobeysp{\mbox{}\space}
+\def\verbatim@font{\normalfont\ttfamily\raggedright}
+\makeatother
+
+\let\oldinclgraphics\includegraphics
+\renewcommand{\includegraphics}[1]{\oldinclgraphics[width=0.9\textwidth,height=0.9\textheight,keepaspectratio]{#1}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \author{$author$}
 $if(address)$
 \address{

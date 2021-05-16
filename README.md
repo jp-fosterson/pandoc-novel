@@ -1,11 +1,11 @@
 pandoc-novel
 =============
 
-This is a template project for generating a novel or story collection from markdown files and building both an ePub file and a printable PDF using [Pandoc](https://pandoc.org), [LaTeX](https://www.latex-project.org/get/), and [GNU Make](https://www.gnu.org/software/make/).   This project is a distillation of the code I used to build [my story collection](https://www.amazon.com/Plunge-Pool-Stories-JP-Fosterson/dp/B0939ZGC3G/), and was partly inspired by [Dan Grec's post on how he created his book for publication using LaTeX](http://theroadchoseme.com/how-i-self-published-a-professional-paperback-and-ebook-using-latex-and-pandoc).  
+This is a template project for generating a novel or story collection from markdown files and building an ePub file, a printable PDF book suitable for [Amazon KDP](https://kdp.amazon.com), and a SFFMS format [manuscript](http://www.sfwa.org/wp-content/uploads/2009/06/Mssprep.pdf) PDF using [Pandoc](https://pandoc.org), [LaTeX](https://www.latex-project.org/get/), and [GNU Make](https://www.gnu.org/software/make/).   This project is a distillation of the code I used to build [my story collection](https://www.amazon.com/Plunge-Pool-Stories-JP-Fosterson/dp/B0939ZGC3G/), and was partly inspired by [Dan Grec's post on how he created his book for publication using LaTeX](http://theroadchoseme.com/how-i-self-published-a-professional-paperback-and-ebook-using-latex-and-pandoc).  
 
 Well formatted ePub and PDF files should be enough for publishing ebooks and print-on-demand books with [Amazon KDP](https://kdp.amazon.com), [Barnes and Noble Press](https://press.barnesandnoble.com), [Smashwords.com](https://smashwords.com), and other self-publishing outlets.  (Well, that and a decent-looking cover, but cover design, especially for print books, is beyond the scope of this template.)
 
-You can see example output for [PDF](doc/example.pdf), and [ePub](doc/example.epub).
+You can see example output for [book PDF](doc/example.pdf), [ePub](doc/example.epub), and [manuscript PDF](doc/example-ms.pdf).
 
 Set Up
 -------
@@ -14,7 +14,8 @@ Set Up
 
 * [Pandoc](https://pandoc.org)
 * [LaTeX](https://www.latex-project.org/get/) --- Installing LaTeX is beyond the scope of this document, but I use [MacTex](https://www.tug.org/mactex/) on macOS.
-* the [`createspace` package](https://github.com/aginiewicz/createspace).  On the Mac, you can `git clone` that repo into `$HOME/Library/texmf/tex/latex/createspace/`. 
+* the [`createspace` package](https://github.com/aginiewicz/createspace), for formatting your ready-print book pdf.  On the Mac, you can `git clone` that repo into `$HOME/Library/texmf/tex/latex/createspace/`. 
+* the [`sffms` package](https://texdoc.org/serve/sffms_manual.pdf/0) for formatting a manuscript-format PDF.
 
 ### Clone this repo
 
@@ -27,7 +28,7 @@ Set Up
     cd pandoc-novel
     make
 
-This will build two targets `out/example.epub` and `out/example.pdf`.  Open them in your favorite viewers. 
+This will build three targets `out/example.epub`, `out/example.pdf`, and `example-ms.pdf`.  Open them in your favorite viewers. 
 
 If you're on macOS  `make view-epub` will attempt to build the `epub` target and open the file in [Calibre's](https://calibre-ebook.com) ebook viewer component (without actually adding the book to your library).  Likewise `make view-pdf` will build the `pdf` target and open it with the default PDF viewer (probably `Preview`).  If you're not on macOS, you can edit these targets in the `Makefile` to open the documents in your favorite viewers.
 
@@ -81,7 +82,9 @@ The title, author, copyright notice, ePub cover image, and other important metad
 
 `make` or `make all` --- makes the main ePub and PDF targets in `out/`.
 
-`make pdf`, `make epub` --- do what they say
+`make pdf` -- builds the print-ready book PDF.
+`make epub` --- builds the epub book.
+`make ms` --- builds the manuscript-format PDF.
 
 `make unzip` --- Builds the ePub document, which really just a zip archive full of files, and then unzips it into `out/$(SLUG).unzip` so that you can examine the contents.  This is fun for the curious, or if you need to understand the style classes used in the document when modifying the stylesheet (see below).
 
@@ -102,7 +105,11 @@ The `STYLESHEET` variable in the [`Makefile`](/Makefile) selects the stylesheet 
 
 ### LaTeX Template
 
-The LaTeX file that generates the PDF is build from a template in `templates/book.tex` it uses [Pandoc template syntax](https://pandoc.org/MANUAL.html#templates).  The title page design was taken from [Peter Wilson's great collection of LaTeX title pages](http://tug.ctan.org/info/latex-samples/TitlePages/titlepages.pdf).   The page header and numbering are controlled by the [fancyhdr package](https://texblog.org/2007/11/07/headerfooter-in-latex-with-fancyhdr/).
+The LaTeX files that generate the book and manuscript PDF are built from templates in `templates/book.tex` and `templates/sffms.tex`. They use [Pandoc template syntax](https://pandoc.org/MANUAL.html#templates).  
+
+For the book PDF, the title page design for the book template was taken from [Peter Wilson's great collection of LaTeX title pages](http://tug.ctan.org/info/latex-samples/TitlePages/titlepages.pdf), feel free to replace it with a design you like better.   The page header and numbering are controlled by the [fancyhdr package](https://texblog.org/2007/11/07/headerfooter-in-latex-with-fancyhdr/).
+
+For the manuscript PDF, I had to define or override a handful of LaTeX commands to get some things to work (e.g. sections).  Inputs that deviate consierably from the example text may require some LaTeX tinkering to get right.  By default, the manuscript omits the backmatter like "Acknowledgements" and "About the Author" sections.  To include them, add $(BACKMATTER) to the `$(SLUG)-ms.tex` target in the `Makefile`.
 
 
 Publishing

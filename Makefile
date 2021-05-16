@@ -99,7 +99,7 @@ $(SLUG).tex: templates/book.tex metadata.yaml $(CONTENTS) tmp/backmatter.tex
 	pandoc $(PANDOC_ARGS) \
 		--template=templates/book.tex \
 		-o $@ metadata.yaml \
-		--top-level-division=part \
+		--top-level-division=chapter \
 		--metadata=ts:"`date`" \
 		$(CONTENTS)
 
@@ -108,7 +108,7 @@ $(SLUG)-ms.tex: templates/sffms.tex metadata.yaml $(CONTENTS)
 	pandoc $(PANDOC_ARGS) \
 		--template=templates/sffms.tex \
 		-o $@ metadata.yaml \
-		--top-level-division=part \
+		--top-level-division=chapter \
 		--metadata=ts:"`date`" \
 		$(CONTENTS)
 
