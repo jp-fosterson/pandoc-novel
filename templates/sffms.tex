@@ -1,0 +1,38 @@
+\documentclass[novel]{sffms}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage[hidelinks]{hyperref}
+
+\usepackage{fancyhdr}
+
+\renewcommand{\section}[3][-,-]{\begin{center}#3\end{center}}
+\renewcommand{\rule}[3][1]{\#}
+
+\author{$author$}
+$if(address)$
+\address{
+    $for(address)$
+    $address$\\
+    $endfor$
+    $if(email)$
+    $email$
+    $endif$
+}
+$endif$
+
+$if(wordcount)$
+\wordcount{$wordcount$}
+$else$
+\wordcount{0}
+$endif$
+
+\title{$title$
+$if(subtitle)$
+\\$subtitle$
+$endif$
+}
+\runningtitle{$title$}
+
+\begin{document}
+$body$
+\end{document}

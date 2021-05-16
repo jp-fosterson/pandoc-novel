@@ -43,7 +43,8 @@ PANDOC_ARGS = \
 	--toc \
 	--toc-depth=1 \
 
-LATEX = pdflatex -interaction=nonstopmode
+#LATEX = pdflatex -interaction=nonstopmode
+LATEX = pdflatex
 
 
 ##############################
@@ -52,9 +53,10 @@ LATEX = pdflatex -interaction=nonstopmode
 # The main targets are epub and pdf.
 # The view targets open the document
 #
-all: epub pdf 
+all: epub pdf ms
 epub: out/$(SLUG).epub
 pdf: out/$(SLUG).pdf
+ms: out/$(SLUG)-ms.pdf
 view: view-epub
 unzip: out/$(SLUG).unzip
 
@@ -64,6 +66,8 @@ unzip: out/$(SLUG).unzip
 view-epub: out/$(SLUG).epub
 	open -a ebook-viewer $<
 view-pdf: out/$(SLUG).pdf
+	open $<
+view-ms: out/$(SLUG)-ms.pdf
 	open $<
 
 ################
@@ -95,7 +99,16 @@ $(SLUG).tex: templates/book.tex metadata.yaml $(CONTENTS) tmp/backmatter.tex
 	pandoc $(PANDOC_ARGS) \
 		--template=templates/book.tex \
 		-o $@ metadata.yaml \
-		--top-level-division=chapter \
+		--top-level-division=part \
+		--metadata=ts:"`date`" \
+		$(CONTENTS)
+
+### Manuscript-format Latex
+$(SLUG)-ms.tex: templates/sffms.tex metadata.yaml $(CONTENTS)
+	pandoc $(PANDOC_ARGS) \
+		--template=templates/sffms.tex \
+		-o $@ metadata.yaml \
+		--top-level-division=part \
 		--metadata=ts:"`date`" \
 		$(CONTENTS)
 
